@@ -344,7 +344,8 @@ class Client(Worker):
                         self._monitor.format_eval_res(eval_metrics,
                                                       rnd=self.state,
                                                       role='Client #{}'.format(
-                                                          self.ID)))
+                                                          self.ID),
+                                                      return_raw=True))
 
                 metrics.update(**eval_metrics)
 
