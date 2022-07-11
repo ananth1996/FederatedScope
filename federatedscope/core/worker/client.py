@@ -340,12 +340,14 @@ class Client(Worker):
                     target_data_split_name=split)
 
                 if self._cfg.federate.mode == 'distributed':
-                    logger.info(
-                        self._monitor.format_eval_res(eval_metrics,
-                                                      rnd=self.state,
-                                                      role='Client #{}'.format(
-                                                          self.ID),
-                                                      return_raw=True))
+                    eval_log_res = self._monitor.format_eval_res(eval_metrics,
+                                                                 rnd=self.state,
+                                                                 role='Client #{}'.format(self.ID),
+                                                                 return_raw=True)
+                    logger.info(eval_log_res)
+                    if self._cfg.wandb.use and self._cfg.wandb.client_train_info:
+                        self._monitor.save_formatted_results(eval_log_res,
+                                                             save_file_name="")
 
                 metrics.update(**eval_metrics)
 
