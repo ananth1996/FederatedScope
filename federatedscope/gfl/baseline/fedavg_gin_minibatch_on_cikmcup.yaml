@@ -11,7 +11,7 @@ federate:
   share_local_model: False
   client_num: 13
 data:
-  root: /wrk-vakka/group/ads-common/cikm22analyticup/data 
+  root: /scratch/project_2005865/cikm22analyticup/data 
   type: cikmcup
 model:
   type: gin
